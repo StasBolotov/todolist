@@ -1,4 +1,5 @@
 import React from "react";
+import {Button} from "./Button";
 
 type TasksType = {
     id: number
@@ -10,6 +11,7 @@ type PropsType = {
     tasks: TasksType[]
     data?: string
 }
+
 export const ToDoList = ({title, tasks, data}: PropsType) => {
     return (
         <div className="App">
@@ -36,9 +38,9 @@ export const ToDoList = ({title, tasks, data}: PropsType) => {
                 )}
 
                 <div>
-                    <button>All</button>
-                    <button>Active</button>
-                    <button>Completed</button>
+                    <Button title={'All'}/>
+                    <Button title={'Active'}/>
+                    <Button title={'Completed'}/>
                 </div>
                 <div>{data}</div>
             </div>
