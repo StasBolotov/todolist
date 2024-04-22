@@ -1,48 +1,42 @@
-import React from "react";
+// import React from "react";
+import {TaskType} from "./App";
 import {Button} from "./Button";
 
-type TasksType = {
-    id: number
-    title: string
-    isDone: boolean
-}
 type PropsType = {
     title: string
-    tasks: TasksType[]
-    data?: string
+    tasks: TaskType[]
 }
 
-export const ToDoList = ({title, tasks, data}: PropsType) => {
+
+
+export const Todolist = (props: PropsType) => {
+
+    const tasklist: Array<JSX.Element> = props.tasks.map(task => {
+        return(
+            <li>
+                <input type="checkbox" checked={task.isDone}/>
+                <span>{task.title}</span>
+            </li>
+        )
+    })
+
     return (
-        <div className="App">
+        <div className="Todolist">
+            <h3>{props.title}</h3>
             <div>
-                <h3>{title}</h3>
-                <div>
-                    <input/>
-                    <button>+</button>
-                </div>
-
-                {tasks.length === 0 ? (
-                    <p>Тасок нет</p>
-                ) : (
-                    <ul>
-                        {tasks.map(task => {
-                            return (
-                                <li key={task.id}>
-                                    <input type="checkbox" checked={task.isDone}/>
-                                    <span>{task.title}</span>
-                                </li>
-                            )
-                        })}
-                    </ul>
-                )}
-
-                <div>
-                    <Button title={'All'}/>
-                    <Button title={'Active'}/>
-                    <Button title={'Completed'}/>
-                </div>
-                <div>{data}</div>
+                <input/>
+                <Button title="+"/>
+            </div>
+            <ul>
+                {tasklist}
+                {/*<li><input type="checkbox" checked={true}/> <span>HTML&CSS</span></li>*/}
+                {/*<li><input type="checkbox" checked={true}/> <span>JS</span></li>*/}
+                {/*<li><input type="checkbox" checked={false}/> <span>React</span></li>*/}
+            </ul>
+            <div>
+                <Button title="All"/>
+                <Button title="Active"/>
+                <Button title="Completed"/>
             </div>
         </div>
     )

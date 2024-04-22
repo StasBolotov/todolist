@@ -1,9 +1,10 @@
-import React from "react";
-
-type  ButtonPropsType = {
+export type buttonPropsType = {
     title: string
 }
-
-export const Button = ({title}: ButtonPropsType) => {
-    return <button>{title}</button>
+export const Button = ({title}: buttonPropsType) => {
+    return (
+        <button>
+            <span>{title}</span>
+        </button>
+    )
 }
